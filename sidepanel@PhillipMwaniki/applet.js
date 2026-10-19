@@ -37,14 +37,14 @@ class SidePanelApplet extends Applet.TextApplet {
         this._clock = new CinnamonDesktop.WallClock();
         this._clockId = this._clock.connect('notify::clock', () => this._updateClock());
 
-        this.panel = new SidePanel();
-        this.panel.connect('open-state-changed', (panel, open) => this._onOpenStateChanged(open));
+        this._sidePanel = new SidePanel();
+        this._sidePanel.connect('open-state-changed', (panel, open) => this._onOpenStateChanged(open));
         this._buildFooter();
 
         this.widgets = new WidgetHost({
-            container: this.panel.content,
+            container: this._sidePanel.content,
             settings: this.settings,
-            panel: this.panel,
+            panel: this._sidePanel,
             builtinDir: `${metadata.path}/widgets`,
         });
         this.widgets.load();
@@ -67,12 +67,12 @@ class SidePanelApplet extends Applet.TextApplet {
         this._clock.disconnect(this._clockId);
         this._desktopSettings.disconnect(this._desktopSettingsId);
         this.widgets.destroy();
-        this.panel.destroy();
+        this._sidePanel.destroy();
         this.settings.finalize();
     }
 
     toggle() {
-        this.panel.toggle(this._geometry());
+        this._sidePanel.toggle(this._geometry());
     }
 
     _buildFooter() {
@@ -80,16 +80,16 @@ class SidePanelApplet extends Applet.TextApplet {
             const button = new St.Button({ style_class: 'sidepanel-footer-button', can_focus: true, accessible_name: label });
             button.set_child(new St.Icon({ icon_name: iconName, icon_type: St.IconType.SYMBOLIC, style_class: 'popup-menu-icon' }));
             button.connect('clicked', () => {
-                this.panel.close();
+                this._sidePanel.close();
                 callback();
             });
             new imports.ui.tooltips.Tooltip(button, label);
             return button;
         };
-        this.panel.footer.add_child(new St.Widget({ x_expand: true }));
-        this.panel.footer.add_child(button('preferences-system-time-symbolic', _('Date and time settings'),
+        this._sidePanel.footer.add_child(new St.Widget({ x_expand: true }));
+        this._sidePanel.footer.add_child(button('preferences-system-time-symbolic', _('Date and time settings'),
             () => Util.spawnCommandLine('cinnamon-settings calendar')));
-        this.panel.footer.add_child(button('emblem-system-symbolic', _('Side panel settings'),
+        this._sidePanel.footer.add_child(button('emblem-system-symbolic', _('Side panel settings'),
             () => this.configureApplet()));
     }
 
