@@ -10,8 +10,9 @@ it as a notification centre and dashboard for Linux Mint.
   <br><em>Scrolled down: Ambient Sounds presets and sleep timer, and app volume.</em>
 </p>
 
-**Status: phase 3.** Coming next: weather, and a way to add, remove and
-reorder widgets.
+**Status:** all four planned phases are done: the panel, calendar and media
+widgets, notifications with Do Not Disturb, weather, and customising which
+widgets show and in what order.
 
 ## Widgets
 
@@ -19,10 +20,19 @@ reorder widgets.
 | --- | --- |
 | Date and time | The time and today's date, large. |
 | Calendar | Month view; arrows or scrolling change month, clicking the month name returns to today. Styled by your theme's calendar rules. |
+| Weather | Current conditions and a five-day forecast from [Open-Meteo](https://open-meteo.com) (free, no account). Search for your city in the widget; °C/°F toggle. Only the city name you search for and its coordinates are sent. The last forecast is kept, so it shows offline. |
 | Notifications | Notification history, newest first: app, time, title, body and the notification's own action buttons. Click one to open it, × to dismiss, or clear all. Critical notifications are tinted. Includes a **Do not disturb** switch (see below). |
 | Now playing | Every media player (MPRIS): cover art, title, artist, and previous / play-pause / next. Click a player to bring its window forward. |
 | App volume | A volume slider and mute button for each app playing sound. |
 | Ambient Sounds | Shipped by the [Ambient Sounds](https://github.com/PhillipMwaniki/ambient-sounds) applet when it's installed: sound tiles, levels, presets and a sleep timer. |
+
+## Customising
+
+Click the pencil in the panel's footer to customise. Each widget gets
+buttons to move it up or down or hide it, and hidden widgets are listed at
+the bottom with an **Add** button. Click the tick, or close the panel, when
+you're done. Changes apply straight away without reloading the other
+widgets.
 
 ## Do not disturb
 
