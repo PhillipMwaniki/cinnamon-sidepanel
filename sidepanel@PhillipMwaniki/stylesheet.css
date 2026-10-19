@@ -327,3 +327,52 @@
     font-size: 0.75em;
     opacity: 0.7;
 }
+
+/* Customise mode */
+.sidepanel-edit-bar {
+    spacing: 0.3em;
+    padding-bottom: 0.3em;
+}
+
+.sidepanel-edit-button {
+    padding: 0.35em;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidepanel-edit-button:hover,
+.sidepanel-edit-button:focus {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.sidepanel-footer-button:checked {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.sidepanel-hidden-widgets {
+    spacing: 0.6em;
+}
+
+.sidepanel-hidden-row {
+    spacing: 0.6em;
+}
+
+.sidepanel-hidden-name {
+    font-weight: bold;
+}
+
+.sidepanel-hidden-description {
+    font-size: 0.85em;
+    opacity: 0.7;
+}
+
+.sidepanel-edit-add {
+    padding: 0.3em 0.9em;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidepanel-edit-add:hover,
+.sidepanel-edit-add:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}

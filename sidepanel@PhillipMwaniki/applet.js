@@ -26,8 +26,8 @@ class SidePanelApplet extends Applet.TextApplet {
         this.settings.bind('side', 'side');
         this.settings.bind('width', 'width');
         this.settings.bind('keybinding', 'keybinding', () => this._setKeybinding());
-        this.settings.connect('changed::disabled-widgets', () => this.widgets.reload());
-        this.settings.connect('changed::widget-order', () => this.widgets.reload());
+        this.settings.connect('changed::disabled-widgets', () => this.widgets.onSettingsChanged());
+        this.settings.connect('changed::widget-order', () => this.widgets.onSettingsChanged());
 
         this._desktopSettings = new Gio.Settings({ schema_id: 'org.cinnamon.desktop.interface' });
         this._desktopSettingsId = this._desktopSettings.connect('changed', (settings, key) => {
@@ -76,16 +76,21 @@ class SidePanelApplet extends Applet.TextApplet {
     }
 
     _buildFooter() {
-        const button = (iconName, label, callback) => {
+        const button = (iconName, label, callback, closes = true) => {
             const button = new St.Button({ style_class: 'sidepanel-footer-button', can_focus: true, accessible_name: label });
             button.set_child(new St.Icon({ icon_name: iconName, icon_type: St.IconType.SYMBOLIC, icon_size: 16 }));
             button.connect('clicked', () => {
-                this._sidePanel.close();
+                if (closes)
+                    this._sidePanel.close();
                 callback();
             });
-            new imports.ui.tooltips.Tooltip(button, label);
+            button.tooltip = new imports.ui.tooltips.Tooltip(button, label);
             return button;
         };
+
+        // Customise: move, hide and add widgets in place.
+        this._editButton = button('document-edit-symbolic', _('Customize widgets'), () => this._setEditing(!this.widgets.editing), false);
+        this._sidePanel.footer.add_child(this._editButton);
         this._sidePanel.footer.add_child(new St.Widget({ x_expand: true }));
         this._sidePanel.footer.add_child(button('preferences-system-time-symbolic', _('Date and time settings'),
             () => Util.spawnCommandLine('cinnamon-settings calendar')));
@@ -121,10 +126,19 @@ class SidePanelApplet extends Applet.TextApplet {
 
     _onOpenStateChanged(open) {
         this.actor.change_style_pseudo_class('checked', open);
-        if (open)
+        if (open) {
             this.widgets.shown();
-        else
+        } else {
+            this._setEditing(false);
             this.widgets.hidden();
+        }
+    }
+
+    _setEditing(editing) {
+        this.widgets.setEditing(editing);
+        this._editButton.child.icon_name = editing ? 'object-select-symbolic' : 'document-edit-symbolic';
+        this._editButton.tooltip.set_text(editing ? _('Done') : _('Customize widgets'));
+        this._editButton.change_style_pseudo_class('checked', editing);
     }
 
     _setKeybinding() {
