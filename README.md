@@ -3,9 +3,18 @@
 A clock for the Cinnamon panel that opens a side panel of widgets. Think of
 it as a notification centre and dashboard for Linux Mint.
 
-**Status: phase 1.** The panel shell and the widget system work. The only
-built-in widget so far is the date header. Coming next: a calendar, Ambient
-Sounds, now-playing and per-app audio, then notifications and weather.
+**Status: phase 2.** Coming next: notifications, then weather and a way to
+add, remove and reorder widgets.
+
+## Widgets
+
+| Widget | What it does |
+| --- | --- |
+| Date and time | The time and today's date, large. |
+| Calendar | Month view; arrows or scrolling change month, clicking the month name returns to today. Styled by your theme's calendar rules. |
+| Now playing | Every media player (MPRIS): cover art, title, artist, and previous / play-pause / next. Click a player to bring its window forward. |
+| App volume | A volume slider and mute button for each app playing sound. |
+| Ambient Sounds | Shipped by the [Ambient Sounds](https://github.com/PhillipMwaniki/ambient-sounds) applet when it's installed: sound tiles, levels, presets and a sleep timer. |
 
 ## Using it
 
@@ -25,7 +34,7 @@ ln -s "$PWD/sidepanel@PhillipMwaniki" ~/.local/share/cinnamon/applets/
 Then add **Side Panel** from *System Settings → Applets*. You'll probably
 want to remove the stock Calendar applet, since this one replaces it.
 
-## Widgets
+## Writing widgets
 
 Widgets are self-contained folders with a `widget.json` and a `widget.js`.
 Other applets can ship one in a `sidepanel-widget/` folder, so they work on
