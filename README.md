@@ -7,7 +7,7 @@ it as a notification centre and dashboard for Linux Mint.
 
 <p align="center">
   <img src="docs/panel-bottom.png" alt="The side panel scrolled down: Ambient Sounds presets and sleep timer, and app volume" width="300">
-  <br><em>Scrolled down: Ambient Sounds presets and sleep timer, and app volume.</em>
+  <br><em>Scrolled down: the rest of the notifications, now playing, Ambient Sounds and app volume.</em>
 </p>
 
 **Status:** all four planned phases are done: the panel, calendar and media
@@ -28,11 +28,15 @@ widgets show and in what order.
 
 ## Customising
 
+<img src="docs/customise.png" alt="The side panel in customise mode, with move and hide buttons on each widget" width="300" align="right">
+
 Click the pencil in the panel's footer to customise. Each widget gets
 buttons to move it up or down or hide it, and hidden widgets are listed at
 the bottom with an **Add** button. Click the tick, or close the panel, when
 you're done. Changes apply straight away without reloading the other
 widgets.
+
+<br clear="right">
 
 ## Do not disturb
 
