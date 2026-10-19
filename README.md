@@ -10,8 +10,8 @@ it as a notification centre and dashboard for Linux Mint.
   <br><em>Scrolled down: Ambient Sounds presets and sleep timer, and app volume.</em>
 </p>
 
-**Status: phase 2.** Coming next: notifications, then weather and a way to
-add, remove and reorder widgets.
+**Status: phase 3.** Coming next: weather, and a way to add, remove and
+reorder widgets.
 
 ## Widgets
 
@@ -19,9 +19,21 @@ add, remove and reorder widgets.
 | --- | --- |
 | Date and time | The time and today's date, large. |
 | Calendar | Month view; arrows or scrolling change month, clicking the month name returns to today. Styled by your theme's calendar rules. |
+| Notifications | Notification history, newest first: app, time, title, body and the notification's own action buttons. Click one to open it, × to dismiss, or clear all. Critical notifications are tinted. Includes a **Do not disturb** switch (see below). |
 | Now playing | Every media player (MPRIS): cover art, title, artist, and previous / play-pause / next. Click a player to bring its window forward. |
 | App volume | A volume slider and mute button for each app playing sound. |
 | Ambient Sounds | Shipped by the [Ambient Sounds](https://github.com/PhillipMwaniki/ambient-sounds) applet when it's installed: sound tiles, levels, presets and a sleep timer. |
+
+## Do not disturb
+
+Cinnamon's own "display notifications" switch throws notifications away
+while it's off. While Side Panel is installed, turning it off (from the
+widget or System Settings; they're the same switch) hides banners but still
+collects every notification in the panel. Remove the applet and Cinnamon's
+original behaviour comes back.
+
+Notifications are shared with the stock Notifications applet if you also
+have that on a panel: dismissing one in either place removes it from both.
 
 ## Using it
 
