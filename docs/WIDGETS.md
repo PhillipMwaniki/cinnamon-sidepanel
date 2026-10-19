@@ -31,7 +31,8 @@ The panel looks in three places, and the first widget found with a given
     "api": 1,
     "main": "widget.js",
     "card": true,
-    "showTitle": true
+    "showTitle": true,
+    "order": 50
 }
 ```
 
@@ -44,6 +45,7 @@ The panel looks in three places, and the first widget found with a given
 | `main` | no | Entry file (default `widget.js`). |
 | `card` | no | `false` draws the widget straight onto the panel with no card around it, as the date header does. |
 | `showTitle` | no | `false` hides the card title. |
+| `order` | no | Default position (lower is higher up; default 50). The date header is 0 and the calendar 10. Positions the user sets win. |
 
 ## widget.js
 

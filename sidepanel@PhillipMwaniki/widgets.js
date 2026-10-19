@@ -9,6 +9,8 @@ const { requireModule, unloadModule, getModuleByIndex } = imports.misc.fileUtils
 
 var API_VERSION = 1;
 
+const DEFAULT_ORDER = 50;
+
 // Other applets offer a widget by shipping it in this folder.
 const XLET_WIDGET_DIR = 'sidepanel-widget';
 
@@ -74,9 +76,14 @@ var WidgetHost = class WidgetHost {
     load() {
         const order = this._settings.getValue('widget-order') || [];
         const disabled = new Set(this._settings.getValue('disabled-widgets') || []);
+        // Widgets the user has placed come first, in their order; the rest
+        // follow by the "order" hint in their widget.json.
         const rank = entry => {
             const index = order.indexOf(entry.meta.id);
-            return index === -1 ? order.length + (entry.builtin ? 0 : 1) : index;
+            if (index !== -1)
+                return index;
+            const hint = typeof entry.meta.order === 'number' ? entry.meta.order : DEFAULT_ORDER;
+            return order.length + hint;
         };
         const entries = discover(this._builtinDir, this._settings.getValue('extra-widget-dirs') || [])
             .filter(entry => !disabled.has(entry.meta.id))

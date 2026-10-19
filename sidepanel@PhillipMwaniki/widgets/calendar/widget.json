@@ -1,0 +1,8 @@
+{
+    "id": "calendar",
+    "name": "Calendar",
+    "description": "A month calendar.",
+    "api": 1,
+    "showTitle": false,
+    "order": 10
+}
