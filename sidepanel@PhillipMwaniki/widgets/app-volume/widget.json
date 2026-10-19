@@ -1,0 +1,7 @@
+{
+    "id": "app-volume",
+    "name": "App volume",
+    "description": "Volume and mute for each app playing sound.",
+    "api": 1,
+    "order": 30
+}
