@@ -78,7 +78,7 @@ class SidePanelApplet extends Applet.TextApplet {
     _buildFooter() {
         const button = (iconName, label, callback) => {
             const button = new St.Button({ style_class: 'sidepanel-footer-button', can_focus: true, accessible_name: label });
-            button.set_child(new St.Icon({ icon_name: iconName, icon_type: St.IconType.SYMBOLIC, style_class: 'popup-menu-icon' }));
+            button.set_child(new St.Icon({ icon_name: iconName, icon_type: St.IconType.SYMBOLIC, icon_size: 16 }));
             button.connect('clicked', () => {
                 this._sidePanel.close();
                 callback();
