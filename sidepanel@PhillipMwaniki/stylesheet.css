@@ -244,3 +244,86 @@
     opacity: 1;
     background-color: rgba(255, 255, 255, 0.1);
 }
+
+.sidepanel-weather,
+.sidepanel-weather-search,
+.sidepanel-weather-forecast {
+    spacing: 0.6em;
+}
+
+.sidepanel-weather-top {
+    spacing: 0.4em;
+}
+
+.sidepanel-weather-chip {
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    font-size: 0.85em;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidepanel-weather-chip:hover,
+.sidepanel-weather-chip:focus {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.sidepanel-weather-entry {
+    padding: 0.4em 0.8em;
+    border-radius: 999px;
+}
+
+.sidepanel-weather-results {
+    spacing: 0.2em;
+}
+
+.sidepanel-weather-result {
+    padding: 0.4em 0.8em;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.sidepanel-weather-result:hover,
+.sidepanel-weather-result:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidepanel-weather-now {
+    spacing: 0.9em;
+}
+
+.sidepanel-weather-temp {
+    font-size: 2.2em;
+    font-weight: 300;
+}
+
+.sidepanel-weather-condition {
+    font-weight: bold;
+}
+
+.sidepanel-weather-details,
+.sidepanel-weather-updated {
+    font-size: 0.8em;
+    opacity: 0.65;
+}
+
+.sidepanel-weather-day {
+    spacing: 0.15em;
+}
+
+.sidepanel-weather-day-name {
+    font-size: 0.85em;
+    opacity: 0.75;
+}
+
+.sidepanel-weather-day-max {
+    font-weight: bold;
+}
+
+.sidepanel-weather-day-min {
+    opacity: 0.6;
+}
+
+.sidepanel-weather-day-rain {
+    font-size: 0.75em;
+    opacity: 0.7;
+}

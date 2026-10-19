@@ -1,0 +1,8 @@
+{
+    "id": "weather",
+    "name": "Weather",
+    "description": "Current conditions and a five-day forecast from Open-Meteo.",
+    "api": 1,
+    "order": 12,
+    "showTitle": false
+}

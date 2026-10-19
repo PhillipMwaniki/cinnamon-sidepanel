@@ -5,6 +5,8 @@
 // dismissing in either place removes it from both.
 
 const Clutter = imports.gi.Clutter;
+const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
 const Pango = imports.gi.Pango;
 const St = imports.gi.St;
 const Main = imports.ui.main;
@@ -16,6 +18,13 @@ const MAX_SHOWN = 50;
 const MAX_BODY_CHARS = 280;
 const ICON_SIZE = 32;
 
+// Follow the system 12/24-hour setting rather than the locale's default.
+function formatTime(date) {
+    const use24h = new Gio.Settings({ schema_id: 'org.cinnamon.desktop.interface' }).get_boolean('clock-use-24h');
+    const dateTime = GLib.DateTime.new_from_unix_local(Math.floor(date.getTime() / 1000));
+    return dateTime.format(use24h ? '%H:%M' : '%l:%M %p').trim();
+}
+
 function timeAgo(date) {
     const minutes = Math.floor((Date.now() - date.getTime()) / 60000);
     if (minutes < 1)
@@ -24,7 +33,7 @@ function timeAgo(date) {
         return `${minutes} min ago`;
     const now = new Date();
     if (date.toDateString() === now.toDateString())
-        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        return formatTime(date);
     return date.toLocaleDateString([], { day: 'numeric', month: 'short' });
 }
 
