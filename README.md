@@ -3,6 +3,13 @@
 A clock for the Cinnamon panel that opens a side panel of widgets. Think of
 it as a notification centre and dashboard for Linux Mint.
 
+![The side panel open on the desktop](docs/desktop.jpg)
+
+<p align="center">
+  <img src="docs/panel-bottom.png" alt="The side panel scrolled down: Ambient Sounds presets and sleep timer, and app volume" width="300">
+  <br><em>Scrolled down: Ambient Sounds presets and sleep timer, and app volume.</em>
+</p>
+
 **Status: phase 2.** Coming next: notifications, then weather and a way to
 add, remove and reorder widgets.
 
