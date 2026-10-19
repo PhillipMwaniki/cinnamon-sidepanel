@@ -38,7 +38,8 @@ class Player {
         this.actor = new St.BoxLayout({ vertical: true, style_class: 'sidepanel-media-player', visible: false });
 
         // Clicking the art or the text brings the player's window forward.
-        const info = new St.Button({ style_class: 'sidepanel-media-info', x_expand: true, can_focus: true });
+        // x_fill keeps short titles from being centred in the button.
+        const info = new St.Button({ style_class: 'sidepanel-media-info', x_expand: true, x_fill: true, can_focus: true });
         const infoBox = new St.BoxLayout({ style_class: 'sidepanel-media-info-box' });
         this._art = new St.Icon({ icon_size: ART_SIZE, style_class: 'sidepanel-media-art' });
         const text = new St.BoxLayout({ vertical: true, y_align: Clutter.ActorAlign.CENTER, x_expand: true });

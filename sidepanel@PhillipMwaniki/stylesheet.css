@@ -132,3 +132,115 @@
 .sidepanel-app-volume-name {
     font-size: 0.9em;
 }
+
+.sidepanel-notifications {
+    spacing: 0.6em;
+}
+
+.sidepanel-notifications-header {
+    spacing: 0.4em;
+}
+
+.sidepanel-notifications-dnd,
+.sidepanel-notifications-clear {
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    font-size: 0.85em;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidepanel-notifications-dnd-box {
+    spacing: 0.4em;
+}
+
+.sidepanel-notifications-dnd:hover,
+.sidepanel-notifications-dnd:focus,
+.sidepanel-notifications-clear:hover,
+.sidepanel-notifications-clear:focus {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.sidepanel-notifications-dnd:checked {
+    background-color: rgba(255, 255, 255, 0.22);
+    font-weight: bold;
+}
+
+.sidepanel-notifications-list {
+    spacing: 0.5em;
+}
+
+.sidepanel-notification,
+.sidepanel-notification-critical {
+    border-radius: 10px;
+    padding: 0.4em;
+    spacing: 0.2em;
+}
+
+.sidepanel-notification {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* A separate class rather than an extra one: St doesn't let a later rule
+   of equal specificity win, and ignores compound selectors here. A tint
+   rather than a coloured edge, as St can't draw a one-sided border on a
+   rounded box. */
+.sidepanel-notification-critical {
+    background-color: rgba(255, 138, 128, 0.14);
+}
+
+.sidepanel-notification-main {
+    border-radius: 8px;
+    padding: 0.2em;
+}
+
+.sidepanel-notification-main:hover,
+.sidepanel-notification-main:focus {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidepanel-notification-row {
+    spacing: 0.7em;
+}
+
+.sidepanel-notification-meta {
+    font-size: 0.8em;
+    opacity: 0.6;
+}
+
+.sidepanel-notification-title {
+    font-weight: bold;
+}
+
+.sidepanel-notification-body {
+    font-size: 0.9em;
+    opacity: 0.85;
+}
+
+.sidepanel-notification-actions {
+    spacing: 0.4em;
+    padding: 0.2em 0 0.1em 2.9em;
+}
+
+.sidepanel-notification-action {
+    padding: 0.25em 0.8em;
+    border-radius: 999px;
+    font-size: 0.85em;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.sidepanel-notification-action:hover,
+.sidepanel-notification-action:focus {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.sidepanel-notification-dismiss {
+    padding: 0.35em;
+    border-radius: 999px;
+    opacity: 0.6;
+}
+
+.sidepanel-notification-dismiss:hover,
+.sidepanel-notification-dismiss:focus {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+}

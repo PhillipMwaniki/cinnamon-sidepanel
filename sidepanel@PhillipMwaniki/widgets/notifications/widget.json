@@ -1,0 +1,8 @@
+{
+    "id": "notifications",
+    "name": "Notifications",
+    "description": "Notification history with actions, Do Not Disturb and clear all.",
+    "api": 1,
+    "order": 15,
+    "showTitle": false
+}
