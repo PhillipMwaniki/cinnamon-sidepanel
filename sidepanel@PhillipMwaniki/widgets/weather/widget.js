@@ -131,11 +131,14 @@ var Widget = class Widget {
         const nowText = new St.BoxLayout({ vertical: true, y_align: Clutter.ActorAlign.CENTER, x_expand: true });
         this._temp = label('', 'sidepanel-weather-temp');
         this._condition = label('', 'sidepanel-weather-condition');
+        // Two short lines rather than one wrapped one: St under-reports a
+        // wrapped label's height here, and it overlapped the forecast.
         this._details = label('', 'sidepanel-weather-details');
-        this._details.clutter_text.line_wrap = true;
+        this._wind = label('', 'sidepanel-weather-details');
         nowText.add_child(this._temp);
         nowText.add_child(this._condition);
         nowText.add_child(this._details);
+        nowText.add_child(this._wind);
         now.add_child(this._icon);
         now.add_child(nowText);
         this._forecastBox.add_child(now);
@@ -259,7 +262,8 @@ var Widget = class Widget {
         this._icon.icon_name = now.icon;
         this._temp.text = `${Math.round(current.temperature_2m)}${tempUnit}`;
         this._condition.text = now.text;
-        this._details.text = `${_('Feels like')} ${degrees(current.apparent_temperature)} · ${_('Wind')} ${Math.round(current.wind_speed_10m)} ${windUnit} · ${_('Humidity')} ${current.relative_humidity_2m}%`;
+        this._details.text = `${_('Feels like')} ${degrees(current.apparent_temperature)} · ${_('Humidity')} ${current.relative_humidity_2m}%`;
+        this._wind.text = `${_('Wind')} ${Math.round(current.wind_speed_10m)} ${windUnit}`;
 
         this._days.destroy_all_children();
         daily.time.forEach((date, index) => {
