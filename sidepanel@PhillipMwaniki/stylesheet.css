@@ -63,3 +63,60 @@
 .sidepanel-calendar-header {
     spacing: 0.4em;
 }
+
+.sidepanel-empty {
+    opacity: 0.6;
+}
+
+.sidepanel-media {
+    spacing: 0.8em;
+}
+
+.sidepanel-media-player {
+    spacing: 0.3em;
+}
+
+.sidepanel-media-info {
+    border-radius: 10px;
+    padding: 0.2em;
+}
+
+.sidepanel-media-info:hover,
+.sidepanel-media-info:focus {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidepanel-media-info-box {
+    spacing: 0.8em;
+}
+
+.sidepanel-media-art {
+    border-radius: 8px;
+}
+
+.sidepanel-media-title {
+    font-weight: bold;
+}
+
+.sidepanel-media-artist {
+    opacity: 0.85;
+}
+
+.sidepanel-media-app {
+    font-size: 0.85em;
+    opacity: 0.6;
+}
+
+.sidepanel-media-controls {
+    spacing: 1.2em;
+}
+
+.sidepanel-media-button {
+    padding: 0.5em;
+    border-radius: 999px;
+}
+
+.sidepanel-media-button:hover,
+.sidepanel-media-button:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+}

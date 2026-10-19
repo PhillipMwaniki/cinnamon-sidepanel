@@ -1,0 +1,7 @@
+{
+    "id": "now-playing",
+    "name": "Now playing",
+    "description": "Media players with track info and playback controls.",
+    "api": 1,
+    "order": 20
+}
