@@ -1,0 +1,9 @@
+{
+    "uuid": "sidepanel@PhillipMwaniki",
+    "name": "Side Panel",
+    "description": "A clock that opens a side panel of widgets.",
+    "version": "0.1.0",
+    "icon": "view-right-pane",
+    "max-instances": 1,
+    "author": "PhillipMwaniki"
+}

@@ -1,0 +1,74 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": ["page-general"],
+        "page-general": {
+            "type": "page",
+            "title": "General",
+            "sections": ["section-clock", "section-panel"]
+        },
+        "section-clock": {
+            "type": "section",
+            "title": "Clock",
+            "keys": ["use-custom-format", "custom-format"]
+        },
+        "section-panel": {
+            "type": "section",
+            "title": "Panel",
+            "keys": ["side", "width", "keybinding"]
+        }
+    },
+    "use-custom-format": {
+        "type": "switch",
+        "default": false,
+        "description": "Use a custom clock format",
+        "tooltip": "Otherwise the clock follows the system date and time settings."
+    },
+    "custom-format": {
+        "type": "entry",
+        "default": "%a %e %b  %H:%M",
+        "description": "Format",
+        "dependency": "use-custom-format",
+        "tooltip": "strftime format, e.g. %H:%M or %A %e %B, %l:%M %p"
+    },
+    "side": {
+        "type": "combobox",
+        "default": "auto",
+        "description": "Open on",
+        "options": {
+            "Same side as the clock": "auto",
+            "Left": "left",
+            "Right": "right"
+        }
+    },
+    "width": {
+        "type": "spinbutton",
+        "default": 380,
+        "min": 300,
+        "max": 640,
+        "step": 10,
+        "units": "px",
+        "description": "Width"
+    },
+    "keybinding": {
+        "type": "keybinding",
+        "default": "<Super>n",
+        "description": "Keyboard shortcut to open the panel"
+    },
+    "widget-order": {
+        "type": "generic",
+        "default": []
+    },
+    "disabled-widgets": {
+        "type": "generic",
+        "default": []
+    },
+    "widget-settings": {
+        "type": "generic",
+        "default": {}
+    },
+    "extra-widget-dirs": {
+        "type": "generic",
+        "default": []
+    }
+}
