@@ -4,16 +4,34 @@
 
 const Clutter = imports.gi.Clutter;
 const St = imports.gi.St;
+const AppletManager = imports.ui.appletManager;
 const Main = imports.ui.main;
 const Signals = imports.signals;
 
 const ANIMATION_MS = 180;
 const SLIDE_FRACTION = 0.3;   // of the panel width
 
+function isSuper(symbol) {
+    return symbol === Clutter.KEY_Super_L || symbol === Clutter.KEY_Super_R;
+}
+
+// While anything holds a modal grab, Cinnamon runs keyboard shortcuts on key
+// press (main.js _stageEventHandler), so the Super of Super+N opens the main
+// menu on top of us. Main's handler runs before ours, so we can close it
+// again before it draws.
+function closeAppletMenus() {
+    for (const definition of AppletManager.definitions) {
+        const applet = definition && definition.applet;
+        if (applet && applet.menu && applet.menu.isOpen)
+            applet.menu.close(false);
+    }
+}
+
 var SidePanel = class SidePanel {
     constructor() {
         this.isOpen = false;
         this._side = 'right';
+        this._hasModal = false;
         this._capturedId = 0;
 
         // "menu" picks up the theme's popup background, border and radius.
@@ -42,14 +60,13 @@ var SidePanel = class SidePanel {
     open({ side, x, y, width, height }) {
         if (this.isOpen)
             return;
-        if (!Main.pushModal(this.actor))
+        if (!this._grab())
             return;
         this.isOpen = true;
         this._side = side;
 
         this.actor.set_position(x, y);
         this.actor.set_size(width, height);
-        this._capturedId = global.stage.connect('captured-event', (stage, event) => this._onCapturedEvent(event));
 
         this.actor.remove_all_transitions();
         this.actor.translation_x = this._slideOffset();
@@ -68,9 +85,8 @@ var SidePanel = class SidePanel {
         if (!this.isOpen)
             return;
         this.isOpen = false;
-        global.stage.disconnect(this._capturedId);
-        this._capturedId = 0;
-        Main.popModal(this.actor);
+
+        this._ungrab();
 
         this.actor.remove_all_transitions();
         if (animate) {
@@ -96,6 +112,25 @@ var SidePanel = class SidePanel {
         this.actor.destroy();
     }
 
+    _grab() {
+        if (this._hasModal)
+            return true;
+        if (!Main.pushModal(this.actor))
+            return false;
+        this._hasModal = true;
+        this._capturedId = global.stage.connect('captured-event', (stage, event) => this._onCapturedEvent(event));
+        return true;
+    }
+
+    _ungrab() {
+        if (!this._hasModal)
+            return;
+        global.stage.disconnect(this._capturedId);
+        this._capturedId = 0;
+        Main.popModal(this.actor);
+        this._hasModal = false;
+    }
+
     _slideOffset() {
         const distance = this.actor.width * SLIDE_FRACTION;
         return this._side === 'right' ? distance : -distance;
@@ -104,10 +139,13 @@ var SidePanel = class SidePanel {
     _onCapturedEvent(event) {
         const type = event.type();
         if (type === Clutter.EventType.KEY_PRESS) {
-            if (event.get_key_symbol() === Clutter.KEY_Escape) {
+            const symbol = event.get_key_symbol();
+            if (symbol === Clutter.KEY_Escape) {
                 this.close();
                 return Clutter.EVENT_STOP;
             }
+            if (isSuper(symbol))
+                closeAppletMenus();
         } else if (type === Clutter.EventType.BUTTON_PRESS || type === Clutter.EventType.TOUCH_BEGIN) {
             // Swallow the click, as popup menus do, so that clicking the clock
             // to close the panel doesn't immediately reopen it.
