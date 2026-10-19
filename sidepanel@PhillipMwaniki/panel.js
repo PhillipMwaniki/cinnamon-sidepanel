@@ -67,6 +67,8 @@ var SidePanel = class SidePanel {
 
         this.actor.set_position(x, y);
         this.actor.set_size(width, height);
+        // Always open at the top, with the time showing.
+        this._scroll.get_vscroll_bar().get_adjustment().value = 0;
 
         this.actor.remove_all_transitions();
         this.actor.translation_x = this._slideOffset();
