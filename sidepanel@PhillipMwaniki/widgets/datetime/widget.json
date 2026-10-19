@@ -1,0 +1,7 @@
+{
+    "id": "datetime",
+    "name": "Date and time",
+    "description": "The time and today's date, large.",
+    "api": 1,
+    "card": false
+}
